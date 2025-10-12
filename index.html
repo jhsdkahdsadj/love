@@ -483,37 +483,36 @@
         setInterval(() => createParticle('rose'), 800);
 
         // Countdown Timer: From 26 August 2024 to 1 August 2025
-        function updateCountdown() {
-            const startDate = new Date(2024, 7, 26, 0, 0, 0); // 26 Aug 2024
-            const endDate = new Date(2025, 7, 1, 0, 0, 0);    // 1 Aug 2025
-            const now = new Date();
-            const countdownDisplay = document.getElementById('countdownDisplay');
-            if (now < startDate) {
-                countdownDisplay.innerHTML = "<p style='color: white;'>⏳ The journey begins on 26 August 2024 ⏳</p>";
-                return;
-            }
-            if (now >= endDate) {
-                countdownDisplay.innerHTML = "<p style='color: white;'>🎉 We've reached the destination! 🎉</p>";
-                return;
-            }
-            const elapsed = now - startDate;
-            const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-            if (seconds % 5 === 0) {
-                document.querySelectorAll('.time-number').forEach(num => {
-                    num.style.textShadow = '0 0 20px #ffd700, 2px 2px 4px rgba(0,0,0,0.3)';
-                    setTimeout(() => { num.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)'; }, 200);
-                });
-            }
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+      function updateCountdown() {
+    const startDate = new Date(2024, 7, 26, 0, 0, 0); // 26 Aug 2024
+    const now = new Date();
+    const countdownDisplay = document.getElementById('countdownDisplay');
+    
+    if (now < startDate) {
+        countdownDisplay.innerHTML = "<p style='color: white;'>⏳ The journey begins on 26 August 2024 ⏳</p>";
+        return;
+    }
+    
+    const elapsed = now - startDate;
+    const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+    
+    if (seconds % 5 === 0) {
+        document.querySelectorAll('.time-number').forEach(num => {
+            num.style.textShadow = '0 0 20px #ffd700, 2px 2px 4px rgba(0,0,0,0.3)';
+            setTimeout(() => { num.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)'; }, 200);
+        });
+    }
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
         // Interactive Functions
         function showSurprise() {
